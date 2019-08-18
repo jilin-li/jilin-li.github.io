@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>3.5.1-e的项目 | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关于#ifndef：一般在头文件中会定义防止被多次调用。具体使用方法如下： 1234#ifndef _dcommunication_h //防止头文件被多次包含#define _dcommunication_h...#endif  namespace的用法：为了区别相同变量或者函数 1namespace 名称 &amp;#123;内容&amp;#125;  BYTE* GetReadBufPointer(voi">
+<meta name="keywords" content="关于机械以及计算机的学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3.5.1-e的项目">
+<meta property="og:url" content="http://yoursite.com/2019/08/15/3-5-1-e的项目/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="关于#ifndef：一般在头文件中会定义防止被多次调用。具体使用方法如下： 1234#ifndef _dcommunication_h //防止头文件被多次包含#define _dcommunication_h...#endif  namespace的用法：为了区别相同变量或者函数 1namespace 名称 &amp;#123;内容&amp;#125;  BYTE* GetReadBufPointer(voi">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-18T12:10:50.381Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3.5.1-e的项目">
+<meta name="twitter:description" content="关于#ifndef：一般在头文件中会定义防止被多次调用。具体使用方法如下： 1234#ifndef _dcommunication_h //防止头文件被多次包含#define _dcommunication_h...#endif  namespace的用法：为了区别相同变量或者函数 1namespace 名称 &amp;#123;内容&amp;#125;  BYTE* GetReadBufPointer(voi">
+  
+    <link rel="alternate" href="/atom.xml" title type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-3-5-1-e的项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/15/3-5-1-e的项目/" class="article-date">
+  <time datetime="2019-08-15T07:11:10.000Z" itemprop="datePublished">2019-08-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      3.5.1-e的项目
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>关于#ifndef：一般在头文件中会定义防止被多次调用。具体使用方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#ifndef _dcommunication_h //防止头文件被多次包含</span><br><span class="line">#define _dcommunication_h</span><br><span class="line">...</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>namespace的用法：为了区别相同变量或者函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">namespace 名称 &#123;内容&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>BYTE* GetReadBufPointer(void);</p>
+</li>
+<li><p>枚举typedef enum 和enum详细用法(<a href="https://blog.csdn.net/king16304/article/details/52193562" target="_blank" rel="noopener">https://blog.csdn.net/king16304/article/details/52193562</a>)</p>
+</li>
+<li><p>throw()的作用(<a href="https://blog.csdn.net/yuhan61659/article/details/81563890" target="_blank" rel="noopener">https://blog.csdn.net/yuhan61659/article/details/81563890</a>)</p>
+</li>
+</ol>
+<ul>
+<li>void GetTag() throw(int);               // 表示只抛出int类型异常</li>
+<li>void GetTag() throw(int，char);         // 表示抛出in，char类型异常</li>
+<li>void GetTag() throw();                  // 表示不会抛出任何类型异常</li>
+<li>void GetTag() throw(…);               // 表示抛出任何类型异常</li>
+</ul>
+<ol start="6">
+<li><p><a href="https://blog.csdn.net/wlk1229/article/details/52566701" target="_blank" rel="noopener">串口编程几个函数</a></p>
+<ul>
+<li><p>在Windows中串口被当做一种文件来看待，用CreateFile获得设备句柄，用来打开COM1-COM9(函数参数详解见<a href="https://blog.csdn.net/wangshubo1989/article/details/47746317" target="_blank" rel="noopener">原博</a>,<a href="https://wenku.baidu.com/view/55b89632580216fc700afd47.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/55b89632580216fc700afd47.html</a>)<br>例如我的电脑上的有COM1，以下代码可以打开COM1。INVALID_HANDLE_VALUE是用来判断是否打开成功，如果    creatfile函数打开失败的话返回INVALID_HANDLE_VALUE。</p>
+<figure class="highlight plain"><figcaption><span><stdio.h></stdio.h></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;tchar.h&gt;</span><br><span class="line">#include &lt;Windows.h&gt;  </span><br><span class="line">#include &lt;iostream&gt;   </span><br><span class="line">using namespace std;   </span><br><span class="line">int _tmain(int argc, _TCHAR* argv[])  </span><br><span class="line">&#123;  </span><br><span class="line">	HANDLE m_hCom = CreateFile(_T(&quot;COM1&quot;),GENERIC_READ|GENERIC_WRITE,0,NULL  </span><br><span class="line">		,OPEN_EXISTING,FILE_FLAG_OVERLAPPED,0); //Open Port: COM1  </span><br><span class="line"></span><br><span class="line">	if(m_hCom == INVALID_HANDLE_VALUE)  </span><br><span class="line">	 &#123;</span><br><span class="line">		printf(&quot;%d\n&quot;,INVALID_HANDLE_VALUE);</span><br><span class="line">		printf(&quot;串口打开失败\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	else  </span><br><span class="line">	&#123;  </span><br><span class="line">		printf(&quot;打开成功&quot;);</span><br><span class="line">		CloseHandle(m_hCom);  </span><br><span class="line">		m_hCom = INVALID_HANDLE_VALUE;  </span><br><span class="line">	&#125;  </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SetCommMask    //设置监听事件，设置后可以调用WaitCommEvent  等待事件，若是以同步方式打开串口此函数会清除之前触发的事件</p>
+</li>
+<li><p>SetupComm(this-&gt;hCOM, 1024, 1024)      //第一个是句柄，第二，三位。设置串口发送接收缓存</p>
+</li>
+<li><p>在接收/发送数据前缓冲区中可能有垃圾数据,或者中途想清空缓冲区数据,PURGE_TXABORT | PURGE_TXCLEAR | PURGE_RXABORT | PURGE_RXCLEAR分别表示:立即中断写操作并清空输出缓冲区|清空输出缓冲区|立即中断读操作并清空输入缓冲区|清空输入缓冲区.示例如下:<br>PurgeComm(m_hCom, PURGE_TXABORT | PURGE_RXABORT | PURGE_TXCLEAR | PURGE_RXCLEAR )<br>  PurgeComm(this-&gt;hCOM, PURGE_TXABORT | PURGE_RXABORT | PURGE_TXCLEAR | PURGE_RXCLEAR);</p>
+</li>
+<li><p><a href="https://blog.csdn.net/xueluowutong/article/details/81257654" target="_blank" rel="noopener">try与catch</a></p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="7">
+<li><p>“stdafx.h”: No such file or directory问题解决方法<br>include “stdafx.h”改为#include &lt;stdio.h&gt; #include &lt;tchar.h&gt;</p>
+</li>
+<li><p>0x30是字符”0”的ascii码，两者想减可以把字符转换成相应的数字。比如，字符”3”的ascii码是0x33，那么’3’-0x30=3，正好是数字3。</p>
+</li>
+<li><p>SetString</p>
+</li>
+</ol>
+<ol start="10">
+<li><p><a href="https://blog.csdn.net/xzhdy/article/details/8970017" target="_blank" rel="noopener">PeekMessage(&amp;msg,NULL,0,0,PM_REMOVE)的说明</a><br>因为WINDOWS是基于消息机制的上面代码完成的是不停的收集消息，再把消息发送给各个接受消息的模块比如鼠标消息当鼠标移动的时候，就要发送WM_MOUSEMOVE消息，<br>(::PeekMessage(&amp;msg,NULL,0,0,PM_REMOVE))接受到消息，再发送给OnMouseMove(UINT nFlags, CPoint point)::代表全局函数，是系统提供的<br>原博如下(<a href="https://bbs.csdn.net/topics/10249130" target="_blank" rel="noopener">https://bbs.csdn.net/topics/10249130</a>)</p>
+</li>
+<li><p>Cstring中的函数  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CString a,b;</span><br><span class="line">a = &quot;123456789&quot;;</span><br><span class="line">b =a.Left(4);  //值为:1234</span><br><span class="line">b =a.Mid(3); //值为:456789</span><br><span class="line">b = a.Mid(2, 4); //值为:3456</span><br><span class="line">b = a.Right(4);  //值为:6789</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/15/3-5-1-e的项目/" data-id="cjzgxjrgb0000ckvynu55t9zo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/13/计算机网络/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/15/3-5-1-e的项目/">3.5.1-e的项目</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/13/计算机网络/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/11/我的第一篇博客文章/我的第一篇博客文章/">我的第一篇博客文章</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/11/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/08/第二篇/">如何插入图片</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Jilin-li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
