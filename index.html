@@ -156,6 +156,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-关于MSCOMM控件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/19/关于MSCOMM控件/">关于MSCOMM控件</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/19/关于MSCOMM控件/" class="archive-article-date">
+  	<time datetime="2019-08-19T11:37:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-MSComm控件"><a href="#1-MSComm控件" class="headerlink" title="1.MSComm控件"></a>1.MSComm控件</h1><ul>
+<li>在建立的工程中插入MSComm控件 </li>
+<li>添加MSComm控件ID的控制变量或对象 </li>
+<li>对串口进行初始化，设置MSComm控件的属性 </li>
+<li>添加串口事件的消息处理函数OnComm()函数，在函数中根据应用需要，编写数据处理代码 </li>
+<li>编写串口发送等其他代码 </li>
+<li>关闭串口<br>应用程序对串口的访问<h2 id="控制大恒"><a href="#控制大恒" class="headerlink" title="控制大恒"></a>控制大恒</h2></li>
+</ul>
+<ol>
+<li><p>打开串口。具体代码示例</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void CDig::OnBnClickedButtonOpen()</span><br><span class="line">&#123;</span><br><span class="line">	if (m_mscomm.get_PortOpen()) //如何打开先关闭</span><br><span class="line">	&#123;</span><br><span class="line">		m_mscomm.put_PortOpen(FALSE);</span><br><span class="line">	&#125;</span><br><span class="line">	m_mscomm.put_CommPort(1);//选择串口COM1</span><br><span class="line">	m_mscomm.put_InBufferSize(1024); //输入输出缓存大小</span><br><span class="line">	m_mscomm.put_OutBufferSize(1024);//</span><br><span class="line">	m_mscomm.put_InputLen(1024); </span><br><span class="line">	m_mscomm.put_InputMode(1); //二进制模式</span><br><span class="line">	m_mscomm.put_RThreshold(1);</span><br><span class="line">	m_mscomm.put_Settings(_T(&quot;9600,n,8,1&quot;));//波特率9600，无校验，8数据为，1停止位</span><br><span class="line">	if (!m_mscomm.get_PortOpen())</span><br><span class="line">	&#123;</span><br><span class="line">		m_mscomm.put_PortOpen(TRUE);</span><br><span class="line">		AfxMessageBox(_T(&quot;成功打开串口&quot;));</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		m_mscomm.put_OutBufferCount(0);</span><br><span class="line">		AfxMessageBox(_T(&quot;串口打开失败&quot;));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>串行通讯的数据格式，如下图所示。<a href="https://wenku.baidu.com/view/270fed53f90f76c660371a7f.html" target="_blank" rel="noopener">见原网站</a><img src="1.png" alt><img src="2.png" alt></p>
+</li>
+<li><p>发送数据,其中msg1，msg2为两个字符串。String2Hex将其转换为16进制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CByteArray A,B;</span><br><span class="line">   String2Hex(msg1,A);</span><br><span class="line">String2Hex(msg2,B);</span><br><span class="line">if(flag==0)</span><br><span class="line">&#123;</span><br><span class="line">      m_comm_dah.put_Output(COleVariant(A));</span><br><span class="line">   GetDlgItem(IDC_BUTTON_DAH)-&gt;SetWindowText(_T(&quot;关闭大恒&quot;));</span><br><span class="line">   flag=1;</span><br><span class="line">    &#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">	m_comm_dah.put_Output(COleVariant(B));</span><br><span class="line">   GetDlgItem(IDC_BUTTON_DAH)-&gt;SetWindowText(_T(&quot;打开大恒&quot;));</span><br><span class="line">   flag=0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>String2Hex()函数实现如下所示，通过String2Hex()输出的CBYTEarray是什么东西？？？明天继续，结果在test文件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">void String2Hex(CString str,CByteArray &amp;senddata)</span><br><span class="line">&#123;</span><br><span class="line">	int hexdata,lowhexdata;</span><br><span class="line">	int hexdatalen=0;</span><br><span class="line">	int len=str.GetLength();</span><br><span class="line">	senddata.SetSize(len/2);//字符串长度</span><br><span class="line">	for(int i=0;i&lt;len;) </span><br><span class="line">	&#123;</span><br><span class="line">		char lstr,hstr=str[i];</span><br><span class="line">		if(hstr==&apos; &apos;)</span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line">		i++;</span><br><span class="line">		if(i&gt;=len)</span><br><span class="line">			break;</span><br><span class="line">		lstr=str[i];</span><br><span class="line">		hexdata=ConvertHexChar(hstr);</span><br><span class="line">		lowhexdata=ConvertHexChar(lstr);</span><br><span class="line">		if((hexdata==16)||(lowhexdata==16))</span><br><span class="line">			break;</span><br><span class="line">		else </span><br><span class="line">			hexdata=hexdata*16+lowhexdata;</span><br><span class="line">		i++;</span><br><span class="line">		senddata[hexdatalen]=(char)hexdata;</span><br><span class="line">		hexdatalen++;</span><br><span class="line">	&#125;</span><br><span class="line">	senddata.SetSize(hexdatalen);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中ConvertHexChar(char ch)函数将字符转换为16进制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">char ConvertHexChar(char ch)</span><br><span class="line">&#123;</span><br><span class="line">	if((ch&gt;=&apos;0&apos;)&amp;&amp;(ch&lt;=&apos;9&apos;))</span><br><span class="line">			return ch-0x30;</span><br><span class="line">		else if((ch&gt;=&apos;A&apos;)&amp;&amp;(ch&lt;=&apos;F&apos;))</span><br><span class="line">			return ch-&apos;A&apos;+10;</span><br><span class="line">		else if((ch&gt;=&apos;a&apos;)&amp;&amp;(ch&lt;=&apos;f&apos;))</span><br><span class="line">			return ch-&apos;a&apos;+10;</span><br><span class="line">		else return (-1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>今天调试程序出现的问题，串口通讯的协议没有遵守波特率设置的不对。所以导致无法正确通讯。同时MSG1最开始写错了。同时经过String2Hex()函数以后</p>
+</li>
+<li></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/19/关于MSCOMM控件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-3-5-1-e的项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -187,33 +276,16 @@
 </li>
 <li><p>枚举typedef enum 和enum详细用法(<a href="https://blog.csdn.net/king16304/article/details/52193562" target="_blank" rel="noopener">https://blog.csdn.net/king16304/article/details/52193562</a>)</p>
 </li>
-<li><p>throw()的作用(<a href="https://blog.csdn.net/yuhan61659/article/details/81563890" target="_blank" rel="noopener">https://blog.csdn.net/yuhan61659/article/details/81563890</a>)</p>
+<li><p>throw()的作用(<a href="https://blog.csdn.net/yuhan61659/article/details/81563890" target="_blank" rel="noopener">https://blog.csdn.net/yuhan61659/article/details/81563890</a>)<br>void GetTag() throw(int);               // 表示只抛出int类型异常<br>void GetTag() throw(int，char);         // 表示抛出in，char类型异常<br>void GetTag() throw();                  // 表示不会抛出任何类型异常<br>void GetTag() throw(…);               // 表示抛出任何类型异常<br><a href="https://blog.csdn.net/yuhan61659/article/details/81563890" target="_blank" rel="noopener">见原博</a></p>
 </li>
-</ol>
-<ul>
-<li>void GetTag() throw(int);               // 表示只抛出int类型异常</li>
-<li>void GetTag() throw(int，char);         // 表示抛出in，char类型异常</li>
-<li>void GetTag() throw();                  // 表示不会抛出任何类型异常</li>
-<li>void GetTag() throw(…);               // 表示抛出任何类型异常</li>
-</ul>
-<ol start="6">
-<li><p><a href="https://blog.csdn.net/wlk1229/article/details/52566701" target="_blank" rel="noopener">串口编程几个函数</a></p>
-<ul>
-<li><p>在Windows中串口被当做一种文件来看待，用CreateFile获得设备句柄，用来打开COM1-COM9(函数参数详解见<a href="https://blog.csdn.net/wangshubo1989/article/details/47746317" target="_blank" rel="noopener">原博</a>,<a href="https://wenku.baidu.com/view/55b89632580216fc700afd47.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/55b89632580216fc700afd47.html</a>)<br>例如我的电脑上的有COM1，以下代码可以打开COM1。INVALID_HANDLE_VALUE是用来判断是否打开成功，如果    creatfile函数打开失败的话返回INVALID_HANDLE_VALUE。</p>
-<figure class="highlight plain"><figcaption><span><stdio.h></stdio.h></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;tchar.h&gt;</span><br><span class="line">#include &lt;Windows.h&gt;  </span><br><span class="line">#include &lt;iostream&gt;   </span><br><span class="line">using namespace std;   </span><br><span class="line">int _tmain(int argc, _TCHAR* argv[])  </span><br><span class="line">&#123;  </span><br><span class="line">	HANDLE m_hCom = CreateFile(_T(&quot;COM1&quot;),GENERIC_READ|GENERIC_WRITE,0,NULL  </span><br><span class="line">		,OPEN_EXISTING,FILE_FLAG_OVERLAPPED,0); //Open Port: COM1  </span><br><span class="line"></span><br><span class="line">	if(m_hCom == INVALID_HANDLE_VALUE)  </span><br><span class="line">	 &#123;</span><br><span class="line">		printf(&quot;%d\n&quot;,INVALID_HANDLE_VALUE);</span><br><span class="line">		printf(&quot;串口打开失败\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	else  </span><br><span class="line">	&#123;  </span><br><span class="line">		printf(&quot;打开成功&quot;);</span><br><span class="line">		CloseHandle(m_hCom);  </span><br><span class="line">		m_hCom = INVALID_HANDLE_VALUE;  </span><br><span class="line">	&#125;  </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p><a href="https://blog.csdn.net/wlk1229/article/details/52566701" target="_blank" rel="noopener">串口编程几个函数</a><br> (1) 在Windows中串口被当做一种文件来看待，用CreateFile获得设备句柄，用来打开COM1-COM9(函数参数详解见<a href="https://blog.csdn.net/wangshubo1989/article/details/47746317" target="_blank" rel="noopener">原博</a>,（<a href="https://wenku.baidu.com/view/55b89632580216fc700afd47.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/55b89632580216fc700afd47.html</a>)<br> 例如我的电脑上的有COM1，以下代码可以打开COM1。INVALID_HANDLE_VALUE是用来判断是否打开成功，如果    creatfile函数打开失败的话返回INVALID_HANDLE_VALUE。</p>
+ <figure class="highlight plain"><figcaption><span><stdio.h></stdio.h></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;tchar.h&gt;</span><br><span class="line">#include &lt;Windows.h&gt;  </span><br><span class="line">#include &lt;iostream&gt;   </span><br><span class="line">using namespace std;   </span><br><span class="line">int _tmain(int argc, _TCHAR* argv[])  </span><br><span class="line">&#123;  </span><br><span class="line">	HANDLE m_hCom = CreateFile(_T(&quot;COM1&quot;),GENERIC_READ|GENERIC_WRITE,0,NULL  </span><br><span class="line">		,OPEN_EXISTING,FILE_FLAG_OVERLAPPED,0); //Open Port: COM1  </span><br><span class="line"></span><br><span class="line">	if(m_hCom == INVALID_HANDLE_VALUE)  </span><br><span class="line">	 &#123;</span><br><span class="line">		printf(&quot;%d\n&quot;,INVALID_HANDLE_VALUE);</span><br><span class="line">		printf(&quot;串口打开失败\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	else  </span><br><span class="line">	&#123;  </span><br><span class="line">		printf(&quot;打开成功&quot;);</span><br><span class="line">		CloseHandle(m_hCom);  </span><br><span class="line">		m_hCom = INVALID_HANDLE_VALUE;  </span><br><span class="line">	&#125;  </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> (2) SetCommMask    //设置监听事件，设置后可以调用WaitCommEvent  等待事件，若是以同步方式打开串口此函数会清除之前触发的事件<br> (3) SetupComm(this-&gt;hCOM, 1024, 1024)      //第一个是句柄，第二，三位。设置串口发送接收缓存<br> (4) 在接收/发送数据前缓冲区中可能有垃圾数据,或者中途想清空缓冲区数据,PURGE_TXABORT | PURGE_TXCLEAR | PURGE_RXABORT | PURGE_RXCLEAR分别表示:立即中断写操作并清空输出缓冲区|清空输出缓冲区|立即中断读操作并清空输入缓冲区|清空输入缓冲区.示例如下:</p>
+ <figure class="highlight plain"><figcaption><span>PURGE_TXABORT | PURGE_RXABORT | PURGE_TXCLEAR | PURGE_RXCLEAR )</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PurgeComm(this-&gt;hCOM, PURGE_TXABORT | PURGE_RXABORT | PURGE_TXCLEAR | PURGE_RXCLEAR);</span><br></pre></td></tr></table></figure>
+
+<p> (5) <a href="https://blog.csdn.net/xueluowutong/article/details/81257654" target="_blank" rel="noopener">try与catch</a><br>不是很懂。</p>
 </li>
-<li><p>SetCommMask    //设置监听事件，设置后可以调用WaitCommEvent  等待事件，若是以同步方式打开串口此函数会清除之前触发的事件</p>
-</li>
-<li><p>SetupComm(this-&gt;hCOM, 1024, 1024)      //第一个是句柄，第二，三位。设置串口发送接收缓存</p>
-</li>
-<li><p>在接收/发送数据前缓冲区中可能有垃圾数据,或者中途想清空缓冲区数据,PURGE_TXABORT | PURGE_TXCLEAR | PURGE_RXABORT | PURGE_RXCLEAR分别表示:立即中断写操作并清空输出缓冲区|清空输出缓冲区|立即中断读操作并清空输入缓冲区|清空输入缓冲区.示例如下:<br>PurgeComm(m_hCom, PURGE_TXABORT | PURGE_RXABORT | PURGE_TXCLEAR | PURGE_RXCLEAR )<br>  PurgeComm(this-&gt;hCOM, PURGE_TXABORT | PURGE_RXABORT | PURGE_TXCLEAR | PURGE_RXCLEAR);</p>
-</li>
-<li><p><a href="https://blog.csdn.net/xueluowutong/article/details/81257654" target="_blank" rel="noopener">try与catch</a></p>
-</li>
-</ul>
-</li>
-</ol>
-<ol start="7">
 <li><p>“stdafx.h”: No such file or directory问题解决方法<br>include “stdafx.h”改为#include &lt;stdio.h&gt; #include &lt;tchar.h&gt;</p>
 </li>
 <li><p>0x30是字符”0”的ascii码，两者想减可以把字符转换成相应的数字。比如，字符”3”的ascii码是0x33，那么’3’-0x30=3，正好是数字3。</p>
@@ -225,7 +297,37 @@
 <li><p><a href="https://blog.csdn.net/xzhdy/article/details/8970017" target="_blank" rel="noopener">PeekMessage(&amp;msg,NULL,0,0,PM_REMOVE)的说明</a><br>因为WINDOWS是基于消息机制的上面代码完成的是不停的收集消息，再把消息发送给各个接受消息的模块比如鼠标消息当鼠标移动的时候，就要发送WM_MOUSEMOVE消息，<br>(::PeekMessage(&amp;msg,NULL,0,0,PM_REMOVE))接受到消息，再发送给OnMouseMove(UINT nFlags, CPoint point)::代表全局函数，是系统提供的<br>原博如下(<a href="https://bbs.csdn.net/topics/10249130" target="_blank" rel="noopener">https://bbs.csdn.net/topics/10249130</a>)</p>
 </li>
 <li><p>Cstring中的函数  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CString a,b;</span><br><span class="line">a = &quot;123456789&quot;;</span><br><span class="line">b =a.Left(4);  //值为:1234</span><br><span class="line">b =a.Mid(3); //值为:456789</span><br><span class="line">b = a.Mid(2, 4); //值为:3456</span><br><span class="line">b = a.Right(4);  //值为:6789</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CString a,b;</span><br><span class="line">a = &quot;123456789&quot;;</span><br><span class="line">b =a.Left(4);  //值为:1234</span><br><span class="line">b =a.Mid(3); //值为:456789</span><br><span class="line">b = a.Mid(2, 4); //值为:3456</span><br><span class="line">b = a.Right(4);  //值为:6789</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>Mid()函数</li>
+</ul>
+<ol start="12">
+<li>CString Mid( int nFirst, int nCount ) const;</li>
+</ol>
+<p>此成员函数从此CString对象中提取一个长度为nCount个字符的子串，从nFirst（从零开始的索引）指定的位置开始。此函数返回一个对所提取的字符串的拷贝。<br>如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CString strCommand,strPosition;</span><br><span class="line">strCommand=&quot;sda&quot;;</span><br><span class="line">strPosition=strCommand.Mid(0,strCommand.GetLength()-1);</span><br><span class="line">cout&lt;&lt;strPosition&lt;&lt;endl;//输出sd</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ol start="13">
+<li>关于CArray,CByteArray,CWordArray,CDWordArray</li>
+</ol>
+<ul>
+<li>byte与bit的关系<br>  (1)Bit 意为”位”或”比特”，是计算机运算的基础单位；Byte 意为”字节”，是计算机文件大小的基本计算单位；<br>  (2)1 bit 就是1位二进制数，比如 1 或者 0；1 Byte 就是 1 个字节，1 个字节是由 8 个二进制位组成的。比如1111111,00000000等。</li>
+<li>MFC的数组类支持的数组类似于C++中的常规数组，可以存放任何数据类型。C++的常规数组在使用前必须将其定义成能够容纳所有可能需要的元素，而MFC数组类创建的对象可以根据需要动态地增大或减小，数组的起始下标是0，而上限可以是固定的，也可以随着元素的增加而增加，数组在内存中的地址仍然是连续分配的。<br>!(图片)[cbytearay.png]</li>
+</ul>
+<hr>
+<ol start="14">
+<li>关于char,如果定义的是字符型变量。输入的数字对应ASCII进行编码。<figure class="highlight plain"><figcaption><span>b</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> cout&lt;&lt;b&lt;&lt;endl;//输出a</span><br><span class="line"> char b=&apos;a&apos;;</span><br><span class="line"> cout&lt;&lt;b&lt;&lt;endl;//输出a	</span><br><span class="line">cout&lt;&lt;0x31&lt;&lt;endl;//输出49，转换为十进制</span><br><span class="line">cout&lt;&lt;(byte) 0x31&lt;&lt;endl;//输出1,根据ascII</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><a href="https://baike.baidu.com/item/ASCII/309296?fr=aladdin" target="_blank" rel="noopener">具体的ASCII进行编码表如下所示</a>：数字位置从48开始表示0，65表示A。byte本质上是unsigt char</p>
+<ol start="15">
+<li><a href="https://www.cnblogs.com/573177885qq/p/5302457.html" target="_blank" rel="noopener">常见的字符串三种拷贝方式</a></li>
+<li>MFC中的printf函数,可以通过自定义函数，调出控制台。（<a href="https://blog.csdn.net/great3779/article/details/5834647）" target="_blank" rel="noopener">https://blog.csdn.net/great3779/article/details/5834647）</a></li>
+<li>字符编码(<a href="https://blog.csdn.net/Deft_MKJing/article/details/79460485" target="_blank" rel="noopener">https://blog.csdn.net/Deft_MKJing/article/details/79460485</a>)</li>
 </ol>
 
       
