@@ -156,6 +156,150 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-指向字符串与数组的指针" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/26/指向字符串与数组的指针/">指向字符串与数组的指针</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/26/指向字符串与数组的指针/" class="archive-article-date">
+  	<time datetime="2019-08-26T09:12:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="指向数组的指针"><a href="#指向数组的指针" class="headerlink" title="指向数组的指针"></a>指向数组的指针</h1><h2 id="整形数组（数组名对应的是首元素的地址）"><a href="#整形数组（数组名对应的是首元素的地址）" class="headerlink" title="整形数组（数组名对应的是首元素的地址）"></a>整形数组（数组名对应的是首元素的地址）</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a[]=&#123;1,2,3,4,5&#125;;</span><br><span class="line">int* pa=a; </span><br><span class="line">cout&lt;&lt;*pa&lt;&lt;endl; //输出1</span><br><span class="line">cout&lt;&lt;a&lt;&lt;endl; //输出004FFA88(首元素的地址)</span><br><span class="line">cout&lt;&lt;*a&lt;&lt;endl;//输出第一个元素（1）</span><br></pre></td></tr></table></figure></code></pre><h2 id="字符串数组（数组名对应的是首元素的地址，但是编译器会在遇到’-0’停下）"><a href="#字符串数组（数组名对应的是首元素的地址，但是编译器会在遇到’-0’停下）" class="headerlink" title="字符串数组（数组名对应的是首元素的地址，但是编译器会在遇到’\0’停下）"></a>字符串数组（数组名对应的是首元素的地址，但是编译器会在遇到’\0’停下）</h2><p>如果是字符串数组有两种初始化的方法:</p>
+<p>(1) <code>char a[5]={&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;,&#39;5&#39;,&#39;\0&#39;};</code> </p>
+<ul>
+<li><p>‘\0’必须要加上，不然编译器不知道从那里停止。直到找到内存中最近的一个空字符。</p>
+</li>
+<li><p>因为char声明的变量一般是放在栈里面的。栈里面的初始化不确定，所以不知道存放的内容是什么。打印出来的就是乱码。</p>
+</li>
+<li><p>解决方法可以将其声明成static。<code>static char a[]={&#39;1&#39;,&#39;2&#39;};</code>此时变量存在在静态存储区。静态存储区在未初始化之前自动初始化为空。所以不会出现乱码</p>
+</li>
+</ul>
+<p>(2) <code>char b[]=&quot;12345&quot;;</code>。字符串会自动加上’\0’多占一位</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">char a[5]=&#123;&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;,&apos;5&apos;&#125;;</span><br><span class="line">cout&lt;&lt;a&lt;&lt;endl; //12345烫烫烫贴O笛濑</span><br><span class="line">char b[]=&quot;12345&quot;;</span><br><span class="line">cout&lt;&lt;b&lt;&lt;endl; //12345</span><br><span class="line">char* pa=a; //12345烫烫烫腆铊XP</span><br></pre></td></tr></table></figure></code></pre><p>(3) 指向字符串的数组。输出变量名称是输出整个字符串直到’\0’停止</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">char a[]=&#123;&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;,&apos;5&apos;,&apos;\0&apos;&#125;;</span><br><span class="line">char b[6]=&quot;12345&quot;;</span><br><span class="line">char* pa=a; </span><br><span class="line">char* pb=b;</span><br><span class="line">cout&lt;&lt;pa&lt;&lt;endl; //12345</span><br><span class="line">cout&lt;&lt;pb&lt;&lt;endl; //12345</span><br></pre></td></tr></table></figure></code></pre><h2 id="问题？"><a href="#问题？" class="headerlink" title="问题？"></a>问题？</h2><p>当char[n]={‘’,’’,…’’}中，n大于后面的元素个数也不会出现乱码的情况。是不是因为为char分配的n个存储空间时候。就将n个空间进行了初始化。</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">char a[6]=&#123;&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;,&apos;5&apos;&#125;;</span><br><span class="line">char b[5]=&#123;&apos;1&apos;,&apos;2&apos;,&apos;3&apos;,&apos;4&apos;,&apos;5&apos;&#125;;</span><br><span class="line">char* pa=a; </span><br><span class="line">char* pb=b;</span><br><span class="line">cout&lt;&lt;pa&lt;&lt;endl; //12345</span><br><span class="line">cout&lt;&lt;pb&lt;&lt;endl; //12345烫烫烫烫烫?</span><br></pre></td></tr></table></figure></code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>指向整形数组的指针，数组名即为首元素地址。</li>
+<li>指向字符数组的指针，输出变量名称会输出整个字符串，一直到遇到’\0’后结束。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/26/指向字符串与数组的指针/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-c++定时器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/21/c++定时器/">c++定时器</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/21/c++定时器/" class="archive-article-date">
+  	<time datetime="2019-08-21T05:59:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h1><ol>
+<li><code>SetTimer( , , )</code> 函数。第一个参数表示此定时器的标识符，第二个参数表示你要定的时间（单位是毫秒），第三个不太了解就设0。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/21/c++定时器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-关于MSCOMM控件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

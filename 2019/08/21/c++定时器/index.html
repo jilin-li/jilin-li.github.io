@@ -6,23 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>关于MSCOMM控件 | </title>
+  <title>c++定时器 | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.MSComm控件 在建立的工程中插入MSComm控件  添加MSComm控件ID的控制变量或对象  对串口进行初始化，设置MSComm控件的属性  添加串口事件的消息处理函数OnComm()函数，在函数中根据应用需要，编写数据处理代码  编写串口发送等其他代码  关闭串口应用程序对串口的访问控制大恒   打开串口。具体代码示例  12345678910111213141516171819202">
+  <meta name="description" content="定时器 SetTimer( , , ) 函数。第一个参数表示此定时器的标识符，第二个参数表示你要定的时间（单位是毫秒），第三个不太了解就设0。">
 <meta name="keywords" content="关于机械以及计算机的学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于MSCOMM控件">
-<meta property="og:url" content="http://yoursite.com/2019/08/19/关于MSCOMM控件/index.html">
+<meta property="og:title" content="c++定时器">
+<meta property="og:url" content="http://yoursite.com/2019/08/21/c++定时器/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="1.MSComm控件 在建立的工程中插入MSComm控件  添加MSComm控件ID的控制变量或对象  对串口进行初始化，设置MSComm控件的属性  添加串口事件的消息处理函数OnComm()函数，在函数中根据应用需要，编写数据处理代码  编写串口发送等其他代码  关闭串口应用程序对串口的访问控制大恒   打开串口。具体代码示例  12345678910111213141516171819202">
+<meta property="og:description" content="定时器 SetTimer( , , ) 函数。第一个参数表示此定时器的标识符，第二个参数表示你要定的时间（单位是毫秒），第三个不太了解就设0。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/08/19/关于MSCOMM控件/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/08/19/关于MSCOMM控件/2.png">
-<meta property="og:updated_time" content="2019-08-20T11:58:53.231Z">
+<meta property="og:updated_time" content="2019-08-21T13:00:29.629Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于MSCOMM控件">
-<meta name="twitter:description" content="1.MSComm控件 在建立的工程中插入MSComm控件  添加MSComm控件ID的控制变量或对象  对串口进行初始化，设置MSComm控件的属性  添加串口事件的消息处理函数OnComm()函数，在函数中根据应用需要，编写数据处理代码  编写串口发送等其他代码  关闭串口应用程序对串口的访问控制大恒   打开串口。具体代码示例  12345678910111213141516171819202">
-<meta name="twitter:image" content="http://yoursite.com/2019/08/19/关于MSCOMM控件/1.png">
+<meta name="twitter:title" content="c++定时器">
+<meta name="twitter:description" content="定时器 SetTimer( , , ) 函数。第一个参数表示此定时器的标识符，第二个参数表示你要定的时间（单位是毫秒），第三个不太了解就设0。">
   
     <link rel="alternative" href="/atom.xml" title type="application/atom+xml">
   
@@ -158,52 +155,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-关于MSCOMM控件" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-c++定时器" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      关于MSCOMM控件
+      c++定时器
     </h1>
   
 
         
-        <a href="/2019/08/19/关于MSCOMM控件/" class="archive-article-date">
-  	<time datetime="2019-08-19T11:37:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
+        <a href="/2019/08/21/c++定时器/" class="archive-article-date">
+  	<time datetime="2019-08-21T05:59:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-MSComm控件"><a href="#1-MSComm控件" class="headerlink" title="1.MSComm控件"></a>1.MSComm控件</h1><ul>
-<li>在建立的工程中插入MSComm控件 </li>
-<li>添加MSComm控件ID的控制变量或对象 </li>
-<li>对串口进行初始化，设置MSComm控件的属性 </li>
-<li>添加串口事件的消息处理函数OnComm()函数，在函数中根据应用需要，编写数据处理代码 </li>
-<li>编写串口发送等其他代码 </li>
-<li>关闭串口<br>应用程序对串口的访问<h2 id="控制大恒"><a href="#控制大恒" class="headerlink" title="控制大恒"></a>控制大恒</h2></li>
-</ul>
-<ol>
-<li><p>打开串口。具体代码示例</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void CDig::OnBnClickedButtonOpen()</span><br><span class="line">&#123;</span><br><span class="line">	if (m_mscomm.get_PortOpen()) //如何打开先关闭</span><br><span class="line">	&#123;</span><br><span class="line">		m_mscomm.put_PortOpen(FALSE);</span><br><span class="line">	&#125;</span><br><span class="line">	m_mscomm.put_CommPort(1);//选择串口COM1</span><br><span class="line">	m_mscomm.put_InBufferSize(1024); //输入输出缓存大小</span><br><span class="line">	m_mscomm.put_OutBufferSize(1024);//</span><br><span class="line">	m_mscomm.put_InputLen(1024); </span><br><span class="line">	m_mscomm.put_InputMode(1); //二进制模式</span><br><span class="line">	m_mscomm.put_RThreshold(1);</span><br><span class="line">	m_mscomm.put_Settings(_T(&quot;9600,n,8,1&quot;));//波特率9600，无校验，8数据为，1停止位</span><br><span class="line">	if (!m_mscomm.get_PortOpen())</span><br><span class="line">	&#123;</span><br><span class="line">		m_mscomm.put_PortOpen(TRUE);</span><br><span class="line">		AfxMessageBox(_T(&quot;成功打开串口&quot;));</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		m_mscomm.put_OutBufferCount(0);</span><br><span class="line">		AfxMessageBox(_T(&quot;串口打开失败&quot;));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>串行通讯的数据格式，如下图所示。<a href="https://wenku.baidu.com/view/270fed53f90f76c660371a7f.html" target="_blank" rel="noopener">见原网站</a><img src="1.png" alt><img src="2.png" alt></p>
-</li>
-<li><p>发送数据,其中msg1，msg2为两个字符串。String2Hex将其转换为16进制</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CByteArray A,B;</span><br><span class="line">   String2Hex(msg1,A);</span><br><span class="line">String2Hex(msg2,B);</span><br><span class="line">if(flag==0)</span><br><span class="line">&#123;</span><br><span class="line">      m_comm_dah.put_Output(COleVariant(A));</span><br><span class="line">   GetDlgItem(IDC_BUTTON_DAH)-&gt;SetWindowText(_T(&quot;关闭大恒&quot;));</span><br><span class="line">   flag=1;</span><br><span class="line">    &#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">	m_comm_dah.put_Output(COleVariant(B));</span><br><span class="line">   GetDlgItem(IDC_BUTTON_DAH)-&gt;SetWindowText(_T(&quot;打开大恒&quot;));</span><br><span class="line">   flag=0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>String2Hex()函数实现如下所示，通过String2Hex()输出的CBYTEarray是什么东西？？？明天继续，结果在test文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">void String2Hex(CString str,CByteArray &amp;senddata)</span><br><span class="line">&#123;</span><br><span class="line">	int hexdata,lowhexdata;</span><br><span class="line">	int hexdatalen=0;</span><br><span class="line">	int len=str.GetLength();</span><br><span class="line">	senddata.SetSize(len/2);//字符串长度</span><br><span class="line">	for(int i=0;i&lt;len;) </span><br><span class="line">	&#123;</span><br><span class="line">		char lstr,hstr=str[i];</span><br><span class="line">		if(hstr==&apos; &apos;)</span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line">		i++;</span><br><span class="line">		if(i&gt;=len)</span><br><span class="line">			break;</span><br><span class="line">		lstr=str[i];</span><br><span class="line">		hexdata=ConvertHexChar(hstr);</span><br><span class="line">		lowhexdata=ConvertHexChar(lstr);</span><br><span class="line">		if((hexdata==16)||(lowhexdata==16))</span><br><span class="line">			break;</span><br><span class="line">		else </span><br><span class="line">			hexdata=hexdata*16+lowhexdata;</span><br><span class="line">		i++;</span><br><span class="line">		senddata[hexdatalen]=(char)hexdata;</span><br><span class="line">		hexdatalen++;</span><br><span class="line">	&#125;</span><br><span class="line">	senddata.SetSize(hexdatalen);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中ConvertHexChar(char ch)函数将字符转换为16进制</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">char ConvertHexChar(char ch)</span><br><span class="line">&#123;</span><br><span class="line">	if((ch&gt;=&apos;0&apos;)&amp;&amp;(ch&lt;=&apos;9&apos;))</span><br><span class="line">			return ch-0x30;</span><br><span class="line">		else if((ch&gt;=&apos;A&apos;)&amp;&amp;(ch&lt;=&apos;F&apos;))</span><br><span class="line">			return ch-&apos;A&apos;+10;</span><br><span class="line">		else if((ch&gt;=&apos;a&apos;)&amp;&amp;(ch&lt;=&apos;f&apos;))</span><br><span class="line">			return ch-&apos;a&apos;+10;</span><br><span class="line">		else return (-1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>今天调试程序出现的问题，串口通讯的协议没有遵守波特率设置的不对。所以导致无法正确通讯。同时MSG1最开始写错了。同时经过String2Hex()函数以后</p>
-</li>
-<li></li>
+        <h1 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h1><ol>
+<li><code>SetTimer( , , )</code> 函数。第一个参数表示此定时器的标识符，第二个参数表示你要定的时间（单位是毫秒），第三个不太了解就设0。</li>
 </ol>
 
       
@@ -284,7 +257,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/19/关于MSCOMM控件/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/21/c++定时器/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -298,18 +271,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/21/c++定时器/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/26/指向字符串与数组的指针/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          c++定时器
+          指向字符串与数组的指针
         
       </div>
     </a>
   
   
-    <a href="/2019/08/15/3-5-1-e的项目/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">3.5.1-e的项目</div>
+    <a href="/2019/08/19/关于MSCOMM控件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于MSCOMM控件</div>
       <i class="icon-circle-right"></i>
     </a>
   
